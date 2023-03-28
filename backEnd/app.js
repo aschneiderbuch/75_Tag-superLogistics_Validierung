@@ -11,15 +11,14 @@ import { load, save } from './funktionen.js'
 
 // Variablen für Server
 const app = express()
-const PORT = 9999
-
+const PORT = 9997
 
 // Middleware
 // logger  oder 'tiny'
 app.use(morgan('dev'))
 
 // Sicherheit, vite 5173
-app.use(cors({ origin: 'http://localhost:5174' }))
+app.use(cors({ origin: "http://localhost:5176" }))
 
 // FrontEnd fetch Head Body auslesen und in json Parsen
 app.use(express.json())
@@ -43,9 +42,9 @@ app.get('/api/v1/lkw', (req, res) => {
 // POST     
 // ! Vorsicht Daten vom -fetch Head Body- davor noch validieren und prüfen 
 
-app.post('/api/v1/lkw',
+app.post('/api/v1/lkw' ,
   /* //! body hier prüfen */
-  body('hersteller').isString().not().isNumeric(),
+  body('getHersteller').isString().not().isNumeric(),
   // Str = ja  / Num = nein  / Str+Num = ja :-(
  (req, res) => {
 
@@ -63,7 +62,7 @@ app.post('/api/v1/lkw',
 
         .catch( err => {
             console.log(err)
-            res.status(599).end()
+            res.status(589).end()
         })
     })
 

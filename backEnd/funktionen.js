@@ -33,12 +33,13 @@ export const save = (item) => {
 
                 // ! JSON umwandeln und hinzufügen
                 // null , 2   db.json  Formatieren, so das es Zeilenumbrüche gibt
-                fs.writeFile(DB_PATH, JSON.stringify(data, null, 2), (err, data) => {
+                fs.writeFile(DB_PATH, JSON.stringify(data, null, 2), (err) => {
                     if (err) reject(err)
                     else {
                         resolve(data)
                     }
                 })
             })
+            .catch( err => reject(err))
     })
 }
