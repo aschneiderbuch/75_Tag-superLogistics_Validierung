@@ -45,7 +45,15 @@ app.get('/api/v1/lkw', (req, res) => {
 
 app.post('/api/v1/lkw',
   /* //! body hier prüfen */
+  body('hersteller').isString().not().isNumeric(),
+  // Str = ja  / Num = nein  / Str+Num = ja :-(
  (req, res) => {
+
+    // ! body prüfungs Error
+    const errors = validationResult(req)
+        if (!errors.isEmpty()){
+            return res.status(499).json( { error: errors.array() } )
+        }
 
         // Daten ins fs schreiben
         const lkw = req.body  
