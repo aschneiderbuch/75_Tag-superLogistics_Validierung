@@ -5,7 +5,7 @@ import cors from 'cors';
 import { body, validationResult } from 'express-validator'
 
 // import funktioen
-import { load } from './funktionen.js'
+import { load, save } from './funktionen.js'
 
 
 
@@ -42,10 +42,21 @@ app.get('/api/v1/lkw', (req, res) => {
 
 // POST     
 // ! Vorsicht Daten vom -fetch Head Body- davor noch validieren und prüfen 
+
 app.post('/api/v1/lkw',
-    /* //! body hier prüfen */
-    (req, res) => {
+  /* //! body hier prüfen */
+ (req, res) => {
+
         // Daten ins fs schreiben
+        const lkw = req.body  
+          // ! abschicken im frontEnde mit u.a. content-type:application/json
+        save(lkw)
+        .then( data => res.json(data))
+
+        .catch( err => {
+            console.log(err)
+            res.status(599).end()
+        })
     })
 
 
