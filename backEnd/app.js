@@ -19,7 +19,7 @@ const PORT = 9999
 app.use(morgan('dev'))
 
 // Sicherheit, vite 5173
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({ origin: 'http://localhost:5174' }))
 
 // FrontEnd fetch Head Body auslesen und in json Parsen
 app.use(express.json())
