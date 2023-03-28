@@ -7,10 +7,10 @@ export const OutputLkwListe = ( { post_Austausch } ) => {
   return (
     <>
     <div>OutputLkwListe</div>
-    <p> { post_Austausch.getHersteller } </p>
-    <p> { post_Austausch.getKilometer } </p>
-    <p> { post_Austausch.getKennzeichen } </p>
-    <p> { post_Austausch.getLast } </p>
+    <h2 style={{color:`red`}} > Hersteller: { post_Austausch.getHersteller } </h2>
+    <p> Kilometer: { post_Austausch.getKilometer } in km</p>
+    <p> Kennzeichen: { post_Austausch.getKennzeichen } </p>
+    <p> Last: { post_Austausch.getLast } in t</p>
     </>
   )
 }
